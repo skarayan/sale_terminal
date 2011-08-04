@@ -4,7 +4,7 @@ require 'sale_terminal'
 describe SaleTerminal do
   it 'should allow me to scan products' do
     product = Product.new('EEE')
-    product.set_price(5)
+    product.price = 5
 
     terminal = SaleTerminal.new [product]
     terminal.scan(product)
@@ -12,9 +12,9 @@ describe SaleTerminal do
 
   it 'should return the correct total' do
     product1 = Product.new('FFF')
-    product1.set_price(10)
+    product1.price = 10
     product2 = Product.new('GGG')
-    product2.set_price(15)
+    product2.price = 15
 
     terminal = SaleTerminal.new [product1, product2]
     2.times { terminal.scan(product1) }
@@ -24,8 +24,8 @@ describe SaleTerminal do
 
   it 'should use the right volume when calculating the total' do
     product = Product.new('HHH')
-    product.set_price(1)
-    product.set_price(3, 4)
+    product.price = 1
+    product.price = { :price => 3, :volume => 4 }
 
     terminal = SaleTerminal.new [product]
     5.times { terminal.scan(product) }
@@ -34,7 +34,7 @@ describe SaleTerminal do
 
   it 'should raise an error if ordering less than the minimum limit' do
     product = Product.new('III')
-    product.set_price(5, 2)
+    product.price = { :price => 5, :volume => 2 }
 
     terminal = SaleTerminal.new [product]
     terminal.scan(product)

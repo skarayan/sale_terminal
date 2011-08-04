@@ -18,11 +18,11 @@ describe Product do
 
   it 'should allow me to set the price' do
     product = Product.new('CCC')
-    product.set_price(5)
+    product.price = 5
   end
 
   it 'should allow me to set the price and volume' do
     product = Product.new('DDD')
-    product.set_price(5, 3)
+    product.price = { :price => 5, :volume => 3 }
   end
 end

@@ -19,7 +19,12 @@ class Product
     @prices = {}
   end
 
-  def set_price(price, volume=1)
+  def price=(price_or_hash)
+    if price_or_hash.class == Hash
+      volume, price = price_or_hash[:volume], price_or_hash[:price]
+    else
+      volume, price = 1, price_or_hash
+    end
     @prices[volume] = price
   end
 end
