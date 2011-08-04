@@ -38,6 +38,6 @@ describe SaleTerminal do
 
     terminal = SaleTerminal.new [product]
     terminal.scan(product)
-    lambda { terminal.total }.should raise_error(MinimumOrderRequired)
+    lambda { terminal.total }.should raise_error(MinimumVolumeNotMet)
   end
 end

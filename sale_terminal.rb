@@ -1,6 +1,3 @@
-class MinimumOrderRequired < Exception
-end
-
 class SaleTerminal
   def initialize(products)
     @products = products
@@ -15,7 +12,7 @@ class SaleTerminal
     order.inject(0) do |total,product_arr|
       product, count = product_arr
       while count > 0
-        price, volume = get_price_and_volume_for_largest_price_set product, count
+        price, volume = product.get_price_and_volume_for_largest_price_set count
         total += price
         count -= volume
       end
@@ -31,12 +28,6 @@ class SaleTerminal
       order[product] += 1
       order
     end
-  end
-
-  def get_price_and_volume_for_largest_price_set(product, count)
-    volumes = product.prices.keys.sort.reverse
-    volumes.each { |volume| return [product.prices[volume], volume] if count >= volume }
-    raise MinimumOrderRequired
   end
 end
 
