@@ -4,9 +4,10 @@ Thank you for considering me.
 
 Few things to note:
 * I developed this application using BDD/TDD with Ruby 1.8.7
-* I used metaprogramming when creating the Product class to avoid persisting data with ActiveRecord
+* I used a little metaprogramming when creating the Product class to avoid persisting data with ActiveRecord
 * I implemented the 3 test cases requested in cucumber
 * I developed 9 tests for the Product and SaleTerminal classes with rspec
+* I made a couple optimizations this morning (8/4), but everything is functional as of 8/3
 
 Steps to running the tests:
 * Clone this git repo
