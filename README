@@ -1,0 +1,19 @@
+Hello,
+
+Thank you for considering me.
+
+Few things to note:
+* I developed this application using BDD/TDD with Ruby 1.8.7
+* I used metaprogramming when creating the Product class to avoid persisting data with ActiveRecord
+* I implemented the 3 test cases requested in cucumber
+* I developed 9 tests for the Product and SaleTerminal classes with rspec
+
+Steps to running the tests:
+* Clone this git repo
+* Run "bundle install" which will install cucumber and rspec
+* Run the cucumber steps using "bundle exec cucumber features"
+* Run the specs using "bundle exec rspec spec"
+
+Thank you,
+Sarkis Karayan
+
