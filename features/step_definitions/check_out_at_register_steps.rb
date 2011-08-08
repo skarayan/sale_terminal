@@ -1,6 +1,10 @@
 require 'app'
 
 Given /^that the prices of products are set by the store$/ do
+  # The delete should really be done by database cleaner
+  Product.delete_all
+  Price.delete_all
+
   @product1 = Product.create(:product_code => 'A')
   @product1.price = 2
   @product1.price = { :price => 7, :volume => 4 }
