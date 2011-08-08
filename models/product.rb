@@ -23,6 +23,7 @@ class Product < ActiveRecord::Base
   def hash_prices
     prices.inject({}) do |hash,price|
       hash[price.volume] = price.price
+      hash
     end
   end
 
@@ -32,7 +33,8 @@ class Product < ActiveRecord::Base
     else
       volume, price = 1, price_or_hash
     end
-    hash_prices[volume] = price
+    # hash_prices[volume] = price
+    prices << Price.create(:volume => volume, :price => price)
   end
 
   def get_price_and_volume_for_largest_price_set(count)
