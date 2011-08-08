@@ -1,9 +1,8 @@
-require 'product'
-require 'sale_terminal'
+require 'app'
 
 describe SaleTerminal do
   it 'should allow me to scan products' do
-    product = Product.new('EEE')
+    product = Product.create(:product_code => 'EEE')
     product.price = 5
 
     terminal = SaleTerminal.new [product]
@@ -11,9 +10,9 @@ describe SaleTerminal do
   end
 
   it 'should return the correct total' do
-    product1 = Product.new('FFF')
+    product1 = Product.create(:product_code => 'FFF')
     product1.price = 10
-    product2 = Product.new('GGG')
+    product2 = Product.create(:product_code => 'GGG')
     product2.price = 15
 
     terminal = SaleTerminal.new [product1, product2]
@@ -23,7 +22,7 @@ describe SaleTerminal do
   end
 
   it 'should use the right volume when calculating the total' do
-    product = Product.new('HHH')
+    product = Product.create(:product_code => 'HHH')
     product.price = 1
     product.price = { :price => 3, :volume => 4 }
 
@@ -33,7 +32,7 @@ describe SaleTerminal do
   end
 
   it 'should raise an error if ordering less than the minimum limit' do
-    product = Product.new('III')
+    product = Product.create(:product_code => 'III')
     product.price = { :price => 5, :volume => 2 }
 
     terminal = SaleTerminal.new [product]
