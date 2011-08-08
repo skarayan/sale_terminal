@@ -14,8 +14,8 @@ class Product < ActiveRecord::Base
     prices << Price.create(:volume => volume, :price => price)
   end
 
-  def get_price_and_volume_for_largest_price_set(count)
-    p = Price.get_highest_volume(id, count)
+  def price_by_largest_volume(volume)
+    p = Price.all_by_product_id(id).largest_volume(volume)
     return p.first if p.first
     raise MinimumVolumeNotMet
   end

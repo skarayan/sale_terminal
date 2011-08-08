@@ -12,7 +12,7 @@ class SaleTerminal
     order.inject(0) do |total,product_arr|
       product, count = product_arr
       while count > 0
-        price = product.get_price_and_volume_for_largest_price_set count
+        price = product.price_by_largest_volume count
         total += price.price
         count -= price.volume
       end
