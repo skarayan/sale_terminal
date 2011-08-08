@@ -2,6 +2,7 @@ require 'rubygems'
 require 'activerecord'
 
 ActiveRecord::Base.logger = Logger.new(STDERR)
+ActiveRecord::Base.logger.level = Logger::INFO
 ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :dbfile  => ":memory:")
 ActiveRecord::Migrator.migrate('db/migrate')
 
